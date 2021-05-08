@@ -1,0 +1,38 @@
+/* Change the navbar color and set the font to bold */
+.navbar{
+    background-color: #0c0c0c;
+    font-weight: bold;
+}
+
+.card-link{
+    font-weight: bold;
+}
+
+/* Set the size to 20px and weight to normal */
+.navbar-brand{
+    font-size:20px;
+    font-weight:normal;
+}
+
+/* Align footer to center */
+.mid{
+    justify-content:center !important;
+}
+
+/* Set a margin to card */
+.card{
+    margin-top:30px;
+}
+
+/* Set the rounded border to the ul */
+ul{
+    border:2px solid #c3c3c3;
+    border-radius:20px;
+    padding:20px;
+    color:#000;
+}
+
+/* Set the text to uppercase */
+#upper{
+    text-transform:uppercase;
+}

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}
+Index
+{% endblock %}
+{% block main %}
+<!-- Table of index  -->
+<table class="table">
+   <!-- Header  -->
+   <thead>
+      <tr>
+         <th scope="col">Symbol</th>
+         <th scope="col">Name</th>
+         <th scope="col">Shares</th>
+         <th scope="col">Price</th>
+         <th scope="col">Total</th>
+      </tr>
+   </thead>
+   <tbody>
+      <!-- Information  from DB  -->
+      {% for stock in stocks %}
+      <tr>
+         <td>{{ stock['symbol'] }}</td>
+         <td>{{ stock['name'] }}</td>
+         <td>{{ stock['shares'] }}</td>
+         <td>{{ stock['price'] }}</td>
+         <td>{{ stock['total'] }}</td>
+      </tr>
+      {% endfor %}
+      <!-- User's cash row  -->
+      <tr>
+         <td>Cash</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td>{{ cash }}</td>
+      </tr>
+      <!-- Row of total  sum  -->
+      <tr>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <th>{{ total }}</th>
+      </tr>
+   </tbody>
+</table>
+{% endblock %}

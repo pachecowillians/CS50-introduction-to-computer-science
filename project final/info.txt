@@ -1,0 +1,26 @@
+CREATE TABLE 'user' (
+'id' integer PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+'name' varchar(20) NOT NULL,
+'password' integer NOT NULL
+);
+
+CREATE TABLE 'task' (
+'id' integer PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+'id_user' integer NOT NULL,
+'name' varchar(200) NOT NULL,
+'description' text,
+'time' integer NOT NULL,
+'date' date,
+'days' text,
+'type' char(2) NOT NULL,
+FOREIGN KEY (id_user) REFERENCES user (id)
+);
+
+CREATE TABLE 'task_done' (
+'id' integer PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+'id_task' integer NOT NULL,
+'date' date NOT NULL,
+FOREIGN KEY (id_task) REFERENCES task (id)
+);
+
+https://youtu.be/fBrxwW72R_A

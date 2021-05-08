@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Header -->
+   <head>
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+      <link href="styles.css" rel="stylesheet">
+      <title>Bible verses</title>
+   </head>
+   <body>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+         <a class="navbar-brand" href="#">Bible Verses</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+               <!-- Links to pages -->
+               <a class="nav-item nav-link" href="index.html">Home</a>
+               <a class="nav-item nav-link" href="oldtestment.html">Old testment</a>
+               <a class="nav-item nav-link active" href="newtestment.html">New testment</a>
+               <a class="nav-item nav-link" href="info.html">Info</a>
+               <a class="nav-item nav-link" href="contact.html">Contact</a>
+            </div>
+         </div>
+      </nav>
+      <!-- Container -->
+      <div class="container mt-5">
+         <!-- Div to new testment -->
+         <div>
+            <h1 class="mb-5 mt-5" id="upper">New testment</h1>
+            <!-- Row to cards -->
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">Romans</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">12:21</h6>
+                        <p class="card-text">Be not overcome of evil, but overcome evil with good.</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">Hebrews</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">4:12</h6>
+                        <p class="card-text">For the word of God is quick, and powerful, and sharper than any twoedged sword, piercing even to the dividing asunder of soul and spirit, and of the joints and marrow, and is a discerner of the thoughts and intents of the heart.</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">Galatians</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">5:22</h6>
+                        <p class="card-text">But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith,</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">Matthew</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">11:28</h6>
+                        <p class="card-text">Come unto me, all ye that labour and are heavy laden, and I will give you rest.</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">Romans</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">12:2</h6>
+                        <p class="card-text">And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God.</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">Hebrews</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">11:1</h6>
+                        <p class="card-text">Now faith is the substance of things hoped for, the evidence of things not seen.</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">Philippians</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">4:6</h6>
+                        <p class="card-text">Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Footer -->
+      <footer>
+         <nav class="navbar navbar-expand-lg navbar-dark mt-5">
+            <div class="container mid">
+               <!-- Link to send me an email -->
+               <div class="navbar-brand">Developed by <a class="navbar-brand blueLink" href="mailto:willianpacheco31@gmail.com">WPS</a></div>
+            </div>
+         </nav>
+      </footer>
+      <!-- Footer -->
+      <script>
+         let v = document.querySelectorAll(".card");
+         // Get the length
+         l = v.length
+         for (let i = 0; i < l; i++){
+             // Store the book, cap and txt from the respective element
+             let bt = v[i].querySelector(".card-link");
+             let book = v[i].querySelector(".card-title").innerHTML;
+             let cap = v[i].querySelector(".card-subtitle").innerHTML;
+             let txt = v[i].querySelector(".card-text").innerHTML;
+             // Set the function to each element
+             bt.onclick = function(){
+               alert(book + " " + cap + "\n" + txt);
+             }
+         }
+      </script>
+      <!-- Javascript to navbar from bootstrap works -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+   </body>
+</html>

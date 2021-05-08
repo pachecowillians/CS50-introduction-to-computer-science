@@ -1,0 +1,77 @@
+.dropdown-menu {
+    right: 0 !important;
+    left: auto !important;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+.groupButtons{
+    position:fixed;
+    bottom:20px;
+    right:30px;
+}
+
+.bt{
+    background:#f4f4f4;
+    margin-top:20px;
+    border-radius:100%;
+    width:60px;
+    height:60px;
+}
+
+.bt:hover{
+    background:#ececec;
+}
+
+.bt img{
+    position:relative;
+    top:30%;
+    left:30%;
+}
+
+.thead-primary{
+    color:#fff;
+    background-color:#0e6acc;
+}
+
+h1{
+    font-size:70px
+}
+
+@media (max-width: 500px){
+    .text-left, .text-right{
+        text-align:center !important;
+    }
+
+
+.groupButtons{
+    bottom:10px;
+    right:20px;
+}
+
+.bt{
+    width:50px;
+    height:50px;
+}
+
+.bt img{
+    top:22%;
+    left:25%;
+}
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Header -->
+   <head>
+      <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+      <link href="styles.css" rel="stylesheet">
+      <title>Bible verses</title>
+   </head>
+   <body>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+         <a class="navbar-brand" href="#">Bible Verses</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+               <!-- Links of pages -->
+               <a class="nav-item nav-link active" href="index.html">Home</a>
+               <a class="nav-item nav-link" href="oldtestment.html">Old testment</a>
+               <a class="nav-item nav-link" href="newtestment.html">New testment</a>
+               <a class="nav-item nav-link" href="info.html">Info</a>
+               <a class="nav-item nav-link" href="contact.html">Contact</a>
+            </div>
+         </div>
+      </nav>
+      <!-- Container -->
+      <div class="container mt-5">
+         <!-- Div to separate new from old testment -->
+         <div>
+            <h1 class="mt-5">New testment</h1>
+            <!-- Row of new testment -->
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">Matthew</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">18:3</h6>
+                        <p class="card-text">And said, Truly I say to you, Except you be converted, and become as little children, you shall not enter into the kingdom of heaven.</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">2 Corinthians</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">5:7</h6>
+                        <p class="card-text">For we walk by faith, not by sight.</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">John</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">8:12</h6>
+                        <p class="card-text">Then spoke Jesus again to them, saying, I am the light of the world: he that follows me shall not walk in darkness, but shall have the light of life.</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- Div of old testment -->
+         <div>
+            <h1 class="mt-5">Old testment</h1>
+            <!-- Row of old testment -->
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">Genesis</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">1:1</h6>
+                        <p class="card-text">In the beginning God created the heaven and the earth.</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">Genesis</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">1:27</h6>
+                        <p class="card-text">So God created man in his own image, in the image of God created he him; male and female created he them.</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="card" style="width: 18rem;">
+                     <div class="card-body">
+                        <h5 class="card-title">Psalms</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">1:1</h6>
+                        <p class="card-text">Blessed is the man that walketh not in the counsel of the ungodly, nor standeth in the way of sinners, nor sitteth in the seat of the scornful.</p>
+                        <a href="#" class="card-link">Expand</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Footer -->
+      <footer>
+         <nav class="navbar navbar-expand-lg navbar-dark mt-5">
+            <div class="container mid">
+               <div class="navbar-brand">Developed by <a class="navbar-brand blueLink" href="mailto:willianpacheco31@gmail.com">WPS</a></div>
+            </div>
+         </nav>
+      </footer>
+      <!-- Footer -->
+      <!-- Javascript -->
+      <script>
+         let v = document.querySelectorAll(".card");
+         // Storing the length
+         l = v.length
+         for (let i = 0; i < l; i++){
+             // taking the value of book, cap and text
+             let bt = v[i].querySelector(".card-link");
+             let book = v[i].querySelector(".card-title").innerHTML;
+             let cap = v[i].querySelector(".card-subtitle").innerHTML;
+             let txt = v[i].querySelector(".card-text").innerHTML;
+             // Definning the onclick event
+             bt.onclick = function(){
+               alert(book + " " + cap + "\n" + txt);
+             }
+         }
+      </script>
+      <!-- The javascript to navbar works -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+   </body>
+</html>

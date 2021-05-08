@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="/static/style.css" rel="stylesheet">
+
+    <title>Tasks: {% block title %}{% endblock %}</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Tasks</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    {% if session.user_id %}
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {% if session.user_name %}
+          {{ session.user_name }}
+          {% else %}
+          User
+          {%  endif %}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/changepassword">Change password</a>
+          <a class="dropdown-item" href="/logout">Log out</a>
+        </div>
+      </li>
+    </ul>
+    {%else%}
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+    </ul>
+    {%endif%}
+  </div>
+</nav>
+    {% if get_flashed_messages() %}
+      <header>
+         <div class="alert alert-primary border text-center" role="alert">
+            {{ get_flashed_messages() | join(" ") }}
+         </div>
+      </header>
+      {% endif %}
+    <main class="container mt-4">
+        {% block main %}{% endblock %}
+      </main>
+      {% if session.user_name %}
+      <div class="groupButtons">
+        <a href="/">
+        <div class="bt">
+          <img src="https://img.icons8.com/material-sharp/24/000000/home.png"/>
+          </div>
+        </a>
+
+         <a href="/search">
+        <div class="bt">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABhElEQVRIibXUsUtVYRjH8Y+WkQ4tUmnaFDTpUEEi3U0cWiRcghyihtr9C1wcBEeHoM2xTRBqaSqwFBoDIxDKRWpIJUJCbTjnxederuecm/c+8HJe3vP7/b4vD+c8dLi6St7fwn3cQC928AGvsXcW8DjWcHzK2sccLv5P+HP8LQiPaw1XWwl/iKMQ8AMLmMJkDn/bAPkoa19pXZH1NRlXcOkU7bSsTUk7XwWwGAzv0VOifxD0v9FfJO7Ct2C4U+VGeBM8j4uE14Nws2K4PDT5XjQTdOfPgXD2tQXAl7AfLAL8CWeVvoi8+sL+oAjwHYf5/jYuVASMh/1Wmfidk34+qxDem18seSbKDDNBvIvRAm03loP+s5NuFJri/PmFpzjfoLspG3bxb54tC081hO0G80+s4hU+qR8lcfjVqkKGsd4kpGy1BDmHJ9hocuNdvMQj9fPoWDbL7lWFpLqMMdlXMpLDU9XaBSmqmvopnCB3Ow1ZaieArC0Jsolr7QaQtWWpU+FN6x9iP5SwY6O1MwAAAABJRU5ErkJggg==">
+          </div>
+        </a>
+
+        <a href="/add">
+        <div class="bt">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAqUlEQVRIie2VsQrCQAyGP6UcgoPdpLOTD9D3fwwnxxucqkNBuuhyd8TSiNZUrtAfAuHnvyRccheYGKsvtCVwCP4ZuFoW4gAPPIL5wJmhEsGjVZ8cXFtWsSTIM0EhfAdsFd1O4e6KvgU6SZS8zvmv5kPMhNoweLQa/tCDiMmuSH5275q8B0497ghcFH1qspyijl7nBTYD3A1oFH3C/B/aksAMo1dmNkt/NJ6hxFbwZeccrAAAAABJRU5ErkJggg==">
+          </div>
+        </a>
+      </div>
+      {%endif%}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

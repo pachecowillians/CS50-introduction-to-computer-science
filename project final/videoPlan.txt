@@ -1,0 +1,9 @@
+register (show username)
+change pass
+login
+home (through the days, and today)
+create a task to  today
+create a task recursive
+do and undo the task of today
+edit the task of today to tomorrow(adied)
+search by name and by day (how busy am i?)

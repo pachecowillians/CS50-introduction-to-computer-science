@@ -1,0 +1,16 @@
+operations
+    id_user
+    symbol
+    shares
+    price
+
+
+CREATE TABLE 'operations' (
+'id_operation' integer PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+'id_user' integer NOT NULL,
+'symbol' varchar(20) NOT NULL,
+'shares' integer NOT NULL,
+'price' real NOT NULL,
+'date' datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY (id_user) REFERENCES users (id)
+)

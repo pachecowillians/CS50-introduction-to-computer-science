@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+{% block title %}
+Add
+{% endblock %}
+{% block main %}
+<!-- Form to change password -->
+<h1 class="mb-5">New task</h1>
+<form action="/add" method="post">
+   <div class="row justify-content-center">
+      <div class="col-sm-6 mt-3">
+         <div class="row mb-4 justify-content-center">
+            <!-- Task name -->
+            <div class="col-sm-3 text-right">
+               <label for="taskname">Task name</label>
+            </div>
+            <div class="col-sm-3">
+               <input autocomplete="off" autofocus class="form-control" name="taskname" id="taskname" placeholder="Task name" type="text" required>
+            </div>
+         </div>
+         <div class="row justify-content-center">
+            <!-- Task description -->
+            <div class="col-sm-3 text-right">
+               <label for="description">Description</label>
+            </div>
+            <div class="col-sm-3">
+               <textarea class="form-control" name="description" id="description" placeholder="Description" rows="10" cols="19"></textarea>
+            </div>
+         </div>
+      </div>
+      <div class="col-sm-6 mt-3">
+         <div class="row justify-content-center">
+
+            <div class="col-sm-4 text-right">
+               <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="option" id="unique" value="unique" checked>
+                  <label class="form-check-label" for="unique">Unique task</label>
+               </div>
+               </div>
+               <div class="col-sm-4 text-left">
+               <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="option" id="recurrent" value="recurrent">
+                  <label class="form-check-label" for="recurrent">Recurrent task</label>
+               </div>
+            </div>
+         </div>
+         <div class="mt-4 row justify-content-center">
+            <!-- Task name -->
+            <div class="col-sm-4 text-right">
+               <label  for="time">Time of task</label>
+            </div>
+            <div class="col-sm-4 text-left">
+               <input class="form-control" name="time" id="time" placeholder="Task name" type="time" required>
+            </div>
+         </div>
+         <div class="row justify-content-center mt-4">
+            <!-- Task name -->
+            <div class="col-sm-4 text-right">
+               <label for="date">Date of task</label>
+            </div>
+            <div class="col-sm-4 text-left">
+               <input class="form-control" name="date" id="date" placeholder="Task name" type="date">
+            </div>
+         </div>
+         <div class="row justify-content-center mt-4">
+            <div class="col-sm-4 text-right">
+               <label>Days of week</label>
+            </div>
+            <div class="col-sm-4 text-left">
+               <div class="justify-content-left row">
+                  <div class="col-sm-4 text-left">
+                     <div class="form-check">
+                        <input disabled class="form-check-input" type="checkbox" value="Sunday" id="sunday" name="sunday">
+                        <label class="form-check-label" for="sunday">
+                        Sunday
+                        </label>
+                     </div>
+                     <div class="form-check">
+                        <input disabled class="form-check-input" type="checkbox" value="Monday" id="monday" name="monday">
+                        <label class="form-check-label" for="monday">
+                        Monday
+                        </label>
+                     </div>
+                     <div class="form-check">
+                        <input disabled class="form-check-input" type="checkbox" value="Tuesday" id="tuesday" name="tuesday">
+                        <label class="form-check-label" for="tuesday">
+                        Tuesday
+                        </label>
+                     </div>
+                     <div class="form-check">
+                        <input disabled class="form-check-input" type="checkbox" value="Wednesday" id="wednesday" name="wednesday">
+                        <label class="form-check-label" for="wednesday">
+                        Wednesday
+                        </label>
+                     </div>
+                     <div class="form-check">
+                        <input disabled class="form-check-input" type="checkbox" value="Thursday" id="thursday" name="thursday">
+                        <label class="form-check-label" for="thursday">
+                        Thursday
+                        </label>
+                     </div>
+                     <div class="form-check">
+                        <input disabled class="form-check-input" type="checkbox" value="Friday" id="friday" name="friday">
+                        <label class="form-check-label" for="friday">
+                        Friday
+                        </label>
+                     </div>
+                     <div class="form-check">
+                        <input disabled class="form-check-input" type="checkbox" value="Saturday" id="saturday" name="saturday">
+                        <label class="form-check-label" for="saturday">
+                        Saturday
+                        </label>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <button class="btn btn-outline-primary mt-5 mb-2" type="submit">Create new task</button>
+   </div>
+
+</form>
+<script>
+    function enable(){
+        u = document.querySelector("#unique").checked;
+        r = document.querySelector("#recurrent").checked;
+        if(u){
+            document.querySelector("#date").disabled = false;
+
+            document.querySelector("#sunday").disabled = true;
+            document.querySelector("#monday").disabled = true;
+            document.querySelector("#tuesday").disabled = true;
+            document.querySelector("#wednesday").disabled = true;
+            document.querySelector("#thursday").disabled = true;
+            document.querySelector("#friday").disabled = true;
+            document.querySelector("#saturday").disabled = true;
+
+            document.querySelector("#sunday").checked = false;
+            document.querySelector("#monday").checked = false;
+            document.querySelector("#tuesday").checked = false;
+            document.querySelector("#wednesday").checked = false;
+            document.querySelector("#thursday").checked = false;
+            document.querySelector("#friday").checked = false;
+            document.querySelector("#saturday").checked = false;
+        }else{
+            document.querySelector("#sunday").disabled = false;
+            document.querySelector("#monday").disabled = false;
+            document.querySelector("#tuesday").disabled = false;
+            document.querySelector("#wednesday").disabled = false;
+            document.querySelector("#thursday").disabled = false;
+            document.querySelector("#friday").disabled = false;
+            document.querySelector("#saturday").disabled = false;
+
+
+            document.querySelector("#date").value = null;
+
+            document.querySelector("#date").disabled = true;
+
+
+        }
+    }
+
+    u = document.querySelector("#unique");
+    r = document.querySelector("#recurrent");
+
+    u.onchange = enable;
+    r.onchange = enable;
+
+
+</script>
+{% endblock %}

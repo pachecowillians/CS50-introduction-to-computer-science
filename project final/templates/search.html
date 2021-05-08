@@ -1,0 +1,196 @@
+{% extends "layout.html" %}
+{% block title %}
+Search
+{% endblock %}
+{% block main %}
+<!-- Form of login -->
+<h1 class="mb-5">Search</h1>
+<form action="/search" method="post">
+   <div class="container">
+   <div class="row justify-content-center mb-4">
+
+      <!-- Username field -->
+      <div class="col-md-2 text-right">
+      <label class="pr-3">Task name</label>
+      </div>
+      <div class="col-md-2 text-left">
+      <input autocomplete="off" autofocus class="form-control" name="task" placeholder="Task name" type="text">
+      </div>
+
+   </div>
+   <div class="row justify-content-center mb-4">
+
+      <!-- Username field -->
+      <div class="col-md-2 text-right">
+      <label class="pr-3">Date</label>
+      </div>
+      <div class="col-md-2 text-left">
+      <input autocomplete="off" autofocus class="form-control" name="date" type="date">
+      </div>
+   </div>
+   <!-- Submit button -->
+   <button class="btn btn-outline-primary" type="submit">Search</button>
+   </div>
+</form>
+<br>
+<br>
+{%if tasks or post%}
+<table class="table table-hover">
+  <thead class="thead-primary">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Time</th>
+      <th scope="col">Date</th>
+      <th scope="col">Days</th>
+      <th scope="col">Type</th>
+      <th scope="col" colspan="3">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+      {%if not tasks and not done and post%}
+      <tr>
+          <td colspan="9" class="p-3"><b>No matching tasks were found!</b></td>
+      </tr>
+      {%endif%}
+
+      {%for task in tasks%}
+    <tr>
+      <td>{{task['name']}}</td>
+      {%if not task['description']%}
+      <td>-</td>
+      {%else%}
+      <td>{{task['description']}}</td>
+      {%endif%}
+      <td>{{task['time']}}</td>
+      {%if not task['date']%}
+      <td>-</td>
+      {%else%}
+      <td>{{task['date']}}</td>
+      {%endif%}
+      {%if not task['days']%}
+      <td>-</td>
+      {%else%}
+      <td>{{task['days']}}</td>
+      {%endif%}
+      {%if task['type'] == 'r'%}
+      <td>Recurrent</td>
+      {%else%}
+      <td>Unique</td>
+      {%endif%}
+
+            <td>
+               <form action="/done" method="post">
+                  <input type="hidden" name="task" value="{{task['id']}}">
+                  <button class="btn btn-outline-success" type="submit">Done</button>
+               </form>
+            </td>
+      <td>
+               <form action="/edit" method="get">
+                  <input type="hidden" name="task" value="{{task['id']}}">
+                  <button class="btn btn-outline-primary" type="submit">Edit</button>
+               </form>
+            </td>
+            <td>
+               <button class="btn btn-outline-danger" type="button" data-toggle="modal" data-target="#modal{{ task['id'] }}">Delete</button>
+               <!-- Modal -->
+               <div class="modal fade" id="modal{{ task['id'] }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{ task['id'] }}" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <h5 class="modal-title" id="modalLabel{{ task['id'] }}">Are you sure?</h5>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                           </button>
+                        </div>
+                        <div class="modal-body">
+                           Do you want to delete the task "{{ task['name'] }}" of {{ task['time'] }}?
+                        </div>
+                        <div class="modal-footer">
+                           <button class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                           <form action="/delete" method="post">
+                              <input type="hidden" name="task" value="{{task['id']}}">
+                              <button class="btn btn-outline-danger" type="submit">Delete</button>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </td>
+    </tr>
+    {%endfor%}
+
+
+
+    {%for task in done%}
+    <tr style="color:gray">
+      <td>{{task['name']}}</td>
+      {%if not task['description']%}
+      <td>-</td>
+      {%else%}
+      <td>{{task['description']}}</td>
+      {%endif%}
+      <td>{{task['time']}}</td>
+      {%if not task['date']%}
+      <td>-</td>
+      {%else%}
+      <td>{{task['date']}}</td>
+      {%endif%}
+      {%if not task['days']%}
+      <td>-</td>
+      {%else%}
+      <td>{{task['days']}}</td>
+      {%endif%}
+      {%if task['type'] == 'r'%}
+      <td>Recurrent</td>
+      {%else%}
+      <td>Unique</td>
+      {%endif%}
+
+            <td>
+               <form action="/undo" method="post">
+                  <input type="hidden" name="task" value="{{task['id']}}">
+                  <button class="btn btn-outline-secondary" type="submit">Undo</button>
+               </form>
+            </td>
+      <td>
+               <form action="/edit" method="get">
+                  <input type="hidden" name="task" value="{{task['id']}}">
+                  <button class="btn btn-outline-secondary" type="submit">Edit</button>
+               </form>
+            </td>
+            <td>
+               <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal{{ task['id'] }}">Delete</button>
+               <!-- Modal -->
+               <div class="modal fade" id="modal{{ task['id'] }}" tabindex="-1" role="dialog" aria-labelledby="modalLabel{{ task['id'] }}" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           <h5 class="modal-title" id="modalLabel{{ task['id'] }}">Are you sure?</h5>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                           </button>
+                        </div>
+                        <div class="modal-body">
+                           Do you want to delete the task "{{ task['name'] }}" of {{ task['time'] }}?
+                        </div>
+                        <div class="modal-footer">
+                           <button class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                           <form action="/delete" method="post">
+                              <input type="hidden" name="task" value="{{task['id']}}">
+                              <button class="btn btn-outline-danger" type="submit">Delete</button>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </td>
+    </tr>
+    {%endfor%}
+
+
+
+  </tbody>
+</table>
+{%endif%}
+{% endblock %}
